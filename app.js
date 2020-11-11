@@ -1,3 +1,12 @@
+/*
+* Name: Date Time Formatter
+* Description: Format date and time in JavaScript
+* Author: Shrikumar Infotech
+* Author URI: dev@shrikumarinfotech.com
+* License:              GPLv2 or later
+* License URI:          http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+*/
+
 // Date-Time Formatter
 'use strict';
 
