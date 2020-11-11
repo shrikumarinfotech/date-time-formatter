@@ -1,5 +1,5 @@
 # Date Time Formatter
-Use JavaScript formatter to get Date and Time in well formatted way.
+Use "Date Time Formatter" to get Date and Time in well formatted way in JavaScript.
 
 # Usage
 
