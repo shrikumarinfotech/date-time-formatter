@@ -31,3 +31,39 @@ console.log(todayDDMMYY);
 // output format DD-MM-YY-TIME
 const todayDDMMYYTIME = dateTimeFormatter('DD-MM-YY-TIME');
 console.log(todayDDMMYYTIME);
+
+// output format Dd
+const todayDd = dateTimeFormatter('Dd');
+console.log(todayDd);
+
+// output format Mm
+const todayMm = dateTimeFormatter('Mm');
+console.log(todayMm);
+
+// output format Yy
+const thisYearYy = dateTimeFormatter('Yy');
+console.log(thisYearYy);
+
+// output format Hrs
+const todayHours = dateTimeFormatter('HRS');
+console.log(todayHours);
+
+// output format Time in AM/PM
+const thisTimeAmPm = dateTimeFormatter('TIME-am-pm');
+console.log(thisTimeAmPm);
+
+// output format d
+const todayWithd = dateTimeFormatter('d');
+console.log(todayWithd);
+
+// output format m
+const todayWithm = dateTimeFormatter('m');
+console.log(todayWithm);
+
+// output format Dd-Mm-Yy-TIME-am-pm
+const todayDDMMYYTIMEAMPM = dateTimeFormatter('Dd-Mm-Yy-TIME-am-pm');
+console.log(todayDDMMYYTIMEAMPM);
+
+// output format TZ
+const timeZoneTZ = dateTimeFormatter('TZ');
+console.log(timeZoneTZ);

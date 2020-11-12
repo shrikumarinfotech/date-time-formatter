@@ -8,9 +8,17 @@ const dateTimeFormatter = function( formatString ){
         "DD",
         "DD-MM",
         "DD-MM-YY",
-        "DD-MM-YY-TIME"
+        "DD-MM-YY-TIME",
+        "Dd",
+        "Mm",
+        "Yy",
+        "HRS",
+        "TIME-am-pm",
+        "d",
+        "m",
+        "Dd-Mm-Yy-TIME-am-pm",
+        "TZ",
     ];
-
     /**
      * functions for data
      */
@@ -21,6 +29,18 @@ const dateTimeFormatter = function( formatString ){
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     // define day names
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    // options: Intl.DateTimeFormat()
+    const options = { 
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false,
+        timeZoneName: 'short' 
+    };
+
 
     // generate and store date and time values
     // get day:date
@@ -28,7 +48,6 @@ const dateTimeFormatter = function( formatString ){
         return data.getDate();
     }
     const theDay = currentDay( datetime );
-    // console.log('Today Date is: ' + theDay );
 
     // get month:number
     const currentMonthNum = function( data ){
@@ -36,7 +55,6 @@ const dateTimeFormatter = function( formatString ){
     }
     const theMonthNum = currentMonthNum(datetime);
     const theMonthName = months[theMonthNum];
-    // console.log('The Month is: ' + months[theMonthNum]);
 
     // get the day:name
     const currentDayNum = function( data ){
@@ -44,14 +62,12 @@ const dateTimeFormatter = function( formatString ){
     }
     const theDayNum = currentDayNum(datetime);
     const theDayName = days[theDayNum];
-    // console.log('Today is: ' + days[theDayNum]);
 
     // get the year:number
     const theCurrentYear = function( data ){
         return data.getFullYear();
     }
     const theYear = theCurrentYear(datetime);
-    // console.log('The Year: ' + theYear);
 
     // get the time:00:00:00
     // get hours:00:
@@ -69,35 +85,79 @@ const dateTimeFormatter = function( formatString ){
         return data.getSeconds();
     }
     const theTimeSeconds = getTimeSeconds( datetime );
-    // define structure as 00:00:00
-    // const theTimeInHours = `${theTimeHrs}:${theTimeMins}:${theTimeSeconds}`;
-    // console.log(theTimeInHours);
+    // get time in:Hours:00:00:00
+    const getTheHours = function( data ){
+        return (new Intl.DateTimeFormat('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false}).format(data));
+    };
+    const theHours = getTheHours( datetime );
+    // get time in AM PM format:12hour
+    const getTimeAmPm = function( data ){
+        return (new Intl.DateTimeFormat('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true}).format( data ));
+    };
+    const theTimeAmPm = getTimeAmPm( datetime );
+    // get timeZone:UTC
+    const getTheTimeZone = function( data ){
+        return (new Intl.DateTimeFormat('en-US', options).format( data ));
+    };
+    const theTimeZone = getTheTimeZone( datetime );
 
     // return the values depending on request
     // check for provided format
     if( formatString === formatOptions[0] ){
-        // console.log( formatOptions[0] );
         // format: "DD":
         return `${theDay} ${theMonthName}, ${theDayName}`;
     }
     else if( formatString === formatOptions[1] ){
-        // console.log( formatOptions[1] );
         // format: "DD-MM":
         return `${theDay} ${theMonthName}`;
     }
     else if( formatString === formatOptions[2] ){
-        // console.log( formatOptions[2] );
         // format: "DD-MM-YY":
         return `${theDay} ${theMonthName}, ${theYear}`;
     }
     else if( formatString === formatOptions[3] ){
-        // console.log( formatOptions[3] );
         // format: "DD-MM-YY-TIME"
         return `${theDay} ${theMonthName}, ${theYear} ${theTimeHrs}:${theTimeMins}:${theTimeSeconds}`;
     }
+    else if( formatString === formatOptions[4] ){
+        // format: "Dd"
+        return `${theDayName}`;
+    }
+    else if( formatString === formatOptions[5] ){
+        // format: "Mm"
+        return `${theMonthName}`;
+    }
+    else if( formatString === formatOptions[6] ){
+        // format: "Yy"
+        return `${theYear}`;
+    }
+    else if( formatString === formatOptions[7] ){
+        // format: "HRS"
+        return `${theHours}`;
+    }
+    else if( formatString === formatOptions[8] ){
+        // format: "TIME-am-pm"
+        return `${theTimeAmPm}`;
+    }
+    else if( formatString === formatOptions[9] ){
+        // format: "d"
+        return (`${theDay} ${theMonthName}, ${theYear}`).toLowerCase();
+    }
+    else if( formatString ===  formatOptions[10] ){
+        // format: "m"
+        return (`${theDay} ${theMonthName}`).toLowerCase();
+    }
+    else if( formatString === formatOptions[11] ){
+        // format: "Dd-Mm-Yy-TIME-am-pm"
+        return `${theDay} ${theMonthName}, ${theYear} ${theTimeAmPm}`;
+    }
+    else if( formatString === formatOptions[12] ){
+        // format: "TZ"
+        return `${theTimeZone}`;
+    }
     else{
         // format: default:
-        return `${theDay} ${theMonthName}, ${theYear} ${theTimeHrs}:${theTimeMins}:${theTimeSeconds}`;
+        return `${datetime}`;
     }
 
 };
