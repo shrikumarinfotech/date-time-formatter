@@ -179,22 +179,22 @@ module.exports = dateTimeFormatter;
 // let seconds = milsecToSec(datetime);
 // console.log(`Seconds: ${seconds}`);
 
-// // convert seconds to minuites
-// const secToMinuites = function( data ){
+// // convert seconds to minutes
+// const secToMinutes = function( data ){
 //     if(data){
 //         return (data / 60);
 //     }
 // }
-// let minuites = secToMinuites(seconds);
-// console.log('Minuites: ' + minuites);
+// let minutes = secToMinutes(seconds);
+// console.log('Minutes: ' + minutes);
 
-// // convert minuites to hours
-// const minuitesToHours = function( data ){
+// // convert minutes to hours
+// const minutesToHours = function( data ){
 //     if(data){
 //         return (data / 60);
 //     }
 // };
-// let hours = minuitesToHours(minuites);
+// let hours = minutesToHours(minutes);
 // console.log('Hours: ' + hours);
 
 // // convert hours to days

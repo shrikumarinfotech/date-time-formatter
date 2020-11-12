@@ -48,7 +48,7 @@ console.log(todayMm); // outputs as: November
 ```
 // output format Yy
 const thisYearYy = dateTimeFormatter('Yy');
-console.log(thisYearYy); // outputs as: 202
+console.log(thisYearYy); // outputs as: 2020
 ```
 
 ```
