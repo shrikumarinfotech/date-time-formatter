@@ -117,7 +117,7 @@ const dateTimeFormatter = function( formatString ){
     }
     else if( formatString === formatOptions[3] ){
         // format: "DD-MM-YY-TIME"
-        return `${theDay} ${theMonthName}, ${theYear} ${theTimeHrs}:${theTimeMins}:${theTimeSeconds}`;
+        return `${theDay} ${theMonthName}, ${theYear} ${theHours}`;
     }
     else if( formatString === formatOptions[4] ){
         // format: "Dd"
