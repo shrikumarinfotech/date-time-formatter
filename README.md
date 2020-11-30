@@ -87,4 +87,47 @@ const timeZoneTZ = dateTimeFormatter('TZ');
 console.log(timeZoneTZ); // outputs as: November 12, 2020, 12:56:20 GMT+5:30
 ```
 
+## HTML Prototype
+
+Use this into your HTML file before `</body>` tag:
+```
+<script src="date-fromatter-html-prototype-v1.0.0.js"></script>
+```
+
+This is HTML structure of the example display:
+```
+<div id="display-wrapper" class="display-wrapper">
+    <p class="p1">Current Date: <span class="p1-date"></span></p>
+    <p class="p2">Current Date: <span class="p2-date"></span></p>
+</div>
+```
+
+To display the Date and Time according to above HTML:
+```
+// Define display wrapper
+const displayWrapper = document.getElementById('display-wrapper');
+// Define display element
+const displayElement = displayWrapper.querySelector('.p1-date');
+const displayDateElement = displayWrapper.querySelector('.p2-date');
+
+// Define current date and time to display
+let dateDay = dateTimeFormatter('DD');
+// Display Date
+displayDateElement.innerHTML = dateDay;
+
+// Display current date and time
+setInterval(() => {
+    displayElement.innerHTML = dateTimeFormatter();
+}, 1000);
+```
+
+Expected Output:
+```
+Mon Nov 30 2020 19:25:49 GMT+0530 (India Standard Time)
+```
+
+```
+30 November, Monday
+```
+
 The output values will be depending on your geographical location and time.
